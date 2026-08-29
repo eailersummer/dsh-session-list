@@ -1,0 +1,41 @@
+{
+  "name": "dsh-session-list",
+  "version": "0.1.0",
+  "description": "DSH web GUI plugin: a right-edge conversation question navigator (Session-List) — a compact cluster of marks, one per user question, with a hover list of all questions, click-to-jump and an on/off switch in General settings.",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/client.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ],
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
