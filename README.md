@@ -24,7 +24,7 @@ DSH Web GUI 插件：会话右侧的**提问导航条**。
 ### 方式一：dsh plugin 命令（推荐）
 
 ```bash
-git clone https://github.com/<你的用户名>/dsh-session-list.git
+git clone https://github.com/eailersummer/dsh-session-list.git
 cd dsh-session-list
 dsh plugin --profile web add link:.
 ```
