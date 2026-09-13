@@ -1,6 +1,6 @@
 {
   "name": "dsh-session-list",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "DSH web GUI plugin: swaps the built-in right-edge turn navigation rail with a custom one — 默认/自定义 in General settings, a hover list of every question in the session, click-to-jump (including unloaded turns) and active-turn highlight.",
   "type": "module",
   "main": "lib/index.js",
