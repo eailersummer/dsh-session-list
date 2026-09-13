@@ -26,7 +26,7 @@ A DSH Web GUI plugin that swaps the conversation's **built-in right-edge turn na
 - **Aligned with the built-in rail**: the custom rail mirrors the built-in one's **actual box** (right edge and vertical centre), so switching never makes it jump.
 - **Long-session friendly**: the rail is capped at 420px tall and scrolls internally, with fading edges.
 - **Unloaded distinction**: turns not loaded yet use a fainter, shorter mark.
-- **Theme-aware colours**: everything uses DSH theme variables (`--dsw-alias-*`), so light/dark themes adapt automatically.
+- **DeepSeek-web-like colours**: idle marks use the theme grey (`--dsw-alias-label-tertiary`) while the **current / hovered mark is DeepSeek blue**; the blue has a light/dark pair keyed off `body[data-ds-dark-theme]` (`#4176e6` light / `#5686fe` dark), and the popup's current row is blue-on-soft-blue — the whole rail follows the DSH light/dark theme;
 - **Failure fallback**: if a DSH upgrade changes the structure so the built-in rail can no longer be hidden, the plugin reverts to Default and logs a diagnostic instead of stacking two rails.
 
 **Other**
@@ -37,6 +37,12 @@ A DSH Web GUI plugin that swaps the conversation's **built-in right-edge turn na
 ---
 
 ## Changelog
+
+### v0.3.2
+
+- Colours reworked to imitate the DeepSeek web rail: grey idle marks, **DeepSeek blue for the current / hovered mark**, with a light/dark blue pair keyed off `body[data-ds-dark-theme]` (`#4176e6` light / `#5686fe` dark) so the rail follows the DSH theme;
+- The popup's current row is now blue text on a soft-blue background;
+- Idle marks switched to `--dsw-alias-label-tertiary`; the popup surface switched to `--dsw-alias-bg-layer-1` (matching the built-in preview box).
 
 ### v0.3.1
 
@@ -215,7 +221,7 @@ The fix portals the rail's DOM to **`document.body`** with `ReactDOM.createPorta
 
 - **Structure-dependent**: the built-in rail is not a slot, so hiding it relies on a structural selector. If a major DSH release reshapes the chat view, `HIDE_CSS` / `findOfficialSlot()` in `lib/client.js` may need updating. When hiding breaks, the plugin **reverts to Default** (never stacks two rails) and logs a `[dsh-session-list]` diagnostic to the console.
 - **Default mode is zero-intrusion**: in Default mode the plugin injects no hiding rules and renders no overlay.
-- **`--dsw-alias-brand-primary` is a high-contrast neutral in 0.1.5** (light `#0f1115` / dark `#f9fafb`), not a blue accent, so the hover/active marks are black-and-white highlights. For a blue accent, switch to `--dsw-alias-state-business-primary`.
+- **The accent blue is the plugin's own**: it does not use DSH's `--dsw-alias-brand-primary` (that token is a neutral black/white high-contrast colour in 0.1.5, not a blue). To change the blue, edit `--sl-accent` / `--sl-accent-soft` on `.sl-rail` in `lib/client.js` (including the `body[data-ds-dark-theme]` dark override).
 
 ---
 
