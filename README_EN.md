@@ -69,6 +69,17 @@ A DSH Web GUI plugin that swaps the conversation's **built-in right-edge turn na
 
 ---
 
+## Version compatibility
+
+| Plugin | Works with | Notes |
+| --- | --- | --- |
+| **v0.3.3+** (recommended) | **DSH 0.1.5 and later** | Locates the built-in rail as the `<nav>` inside the conversation scrollport, so it covers **both layouts** (rail before the chat flow / rail moved out of the ChatView scroller, as in the desktop app); includes the width-handle coexistence and the DeepSeek-blue palette |
+| v0.2.0 – v0.3.2 | DSH 0.1.5 (builds where the rail is still before the chat flow) | Earlier 0.1.5 support; hiding relied on the `:has()` structural rule |
+| v0.1.0 | DSH **before 0.1.5** | DSH had no built-in rail yet; the plugin was a standalone right-edge question rail with a General-settings toggle |
+
+> Every version is **git-tagged**: download the source archive from that tag's page on GitHub, or `git checkout v0.3.1` locally.
+> When you switch DSH versions, pick the tag from the table above (v0.3.3+ already covers both 0.1.5 layouts, so you normally will not need to go back).
+
 ## Installation
 
 ### Requirements
