@@ -24,7 +24,7 @@ A DSH Web GUI plugin that swaps the conversation's **built-in right-edge turn na
 - **Click to jump**: clicking a mark or a list row smooth-scrolls to that turn. **Turns that are not loaded yet are paged in first, then jumped to.**
 - **Active highlight**: the turn you are currently reading is highlighted, and kept scrolled into view.
 - **Aligned with the built-in rail**: the custom rail mirrors the built-in one's **actual box** (right edge and vertical centre), so switching never makes it jump.
-- **Long-session friendly**: the rail is capped at 420px tall and scrolls internally, with fading edges.
+- **Long-session friendly**: the rail draws **at most 20 marks** (the window follows the current turn, so the active mark stays in view), so it normally never overflows; a 420px height cap with internal scrolling remains as a backstop.
 - **Unloaded distinction**: turns not loaded yet use a fainter, shorter mark.
 - **DeepSeek-web-like colours**: idle marks use the theme grey (`--dsw-alias-label-tertiary`) while the **current / hovered mark is DeepSeek blue**; the blue has a light/dark pair keyed off `body[data-ds-dark-theme]` (`#4176e6` light / `#5686fe` dark), and the popup's current row is blue-on-soft-blue — the whole rail follows the DSH light/dark theme;
 - **Failure fallback**: if a DSH upgrade changes the structure so the built-in rail can no longer be hidden, the plugin reverts to Default and logs a diagnostic instead of stacking two rails.
@@ -37,6 +37,16 @@ A DSH Web GUI plugin that swaps the conversation's **built-in right-edge turn na
 ---
 
 ## Changelog
+
+### v0.3.4
+
+- The rail draws **at most 20 marks**: the window follows the turn you are reading, so the active mark is always in view instead of one long column;
+- The hover popup **still lists every question**, so older turns remain reachable.
+
+### v0.3.3
+
+- **Fixed**: newer DSH builds (e.g. the desktop app) moved the built-in rail out of the ChatView scroller (it is no longer `[data-chat-flow]`'s previous sibling), which broke the hide and produced **two rails side by side**;
+- **Fix**: locate the built-in rail as the `<nav>` inside the conversation scrollport `[data-conversation-scroll]` (this plugin renders divs only, so that nav is unambiguous), hide it via both CSS and JS, and mirror its real box; backward compatible with the older layout.
 
 ### v0.3.2
 
